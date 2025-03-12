@@ -25,4 +25,22 @@
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>MotorSimple.c</name>
+			<type>1</type>
+			<locationURI>copy_PARENT/inc/MotorSimple.c</locationURI>
+		</link>
+		<link>
+			<name>Reflectance.c</name>
+			<type>1</type>
+			<locationURI>copy_PARENT/inc/Reflectance.c</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>copy_PARENT</name>
+			<value>$%7BTI_PRODUCTS_DIR%7D/tirslk_max_1_00_02</value>
+		</variable>
+	</variableList>
 </projectDescription>
