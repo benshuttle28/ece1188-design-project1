@@ -18,7 +18,7 @@ void main() {
     while(1) {
         // drive motors at given duty cycles
         reflectance_input = Reflectance_Center(1000);
-        pt = pt->next[input];
+        pt = pt->next[reflectance_input];
 
     }
 
