@@ -1,11 +1,9 @@
 #include "msp.h"
 #include <stdint.h>
 #include "..\inc\Clock.h"
-#include "..\inc\TExaS.h"
-#include "..\inc\CortexM.h"
-#include "..\inc\SysTick.h"
-#include "..\inc\LaunchPad.h"
-#include "MotorFSM.h"
+#include "..\inc\Reflectance.h"
+#include "..\inc\MotorSimple.h"
+#include "..\inc\MotorFSM.h"
 
 void main() {
 
@@ -18,7 +16,7 @@ void main() {
     while(1) {
         // drive motors at given duty cycles
         reflectance_input = Reflectance_Center(1000);
-        pt = pt->next[reflectance_input];
+        motor_pt = motor_pt->next[reflectance_input];
 
     }
 

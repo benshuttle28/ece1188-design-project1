@@ -27,14 +27,24 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>MotorSimple.c</name>
+			<name>src/Clock.c</name>
+			<type>1</type>
+			<locationURI>copy_PARENT/inc/Clock.c</locationURI>
+		</link>
+		<link>
+			<name>src/MotorSimple.c</name>
 			<type>1</type>
 			<locationURI>copy_PARENT/inc/MotorSimple.c</locationURI>
 		</link>
 		<link>
-			<name>Reflectance.c</name>
+			<name>src/Reflectance.c</name>
 			<type>1</type>
 			<locationURI>copy_PARENT/inc/Reflectance.c</locationURI>
+		</link>
+		<link>
+			<name>src/SysTick.c</name>
+			<type>1</type>
+			<locationURI>copy_PARENT/inc/SysTick.c</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>

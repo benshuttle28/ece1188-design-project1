@@ -1,3 +1,4 @@
+/*
 #include "msp.h"
 #include "MotorFSM.h"
 #include <stdint.h>
@@ -11,6 +12,7 @@ state_t FSM[5] = {
                       {0x04, 0x00, centerDuty, centerDuty, {right, left, right, rightCenter}}
 
 };
+*/
 
 
 
