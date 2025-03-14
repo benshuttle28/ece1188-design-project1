@@ -51,8 +51,18 @@ void (*TimerA1Task)(void);   // user function
 // With SMCLK 12 MHz, period has units 2us
 void TimerA1_Init(void (*task)(void), uint16_t period)
 {
-    // write this as part of Lab 13
+    TimerA1Task = task;
+    TIMER_A1->CTL &= ~0x0030;
+    TIMER_A1->CTL = 0x0200;
 
+    TIMER_A1->EX0 &= ~0x0007;
+
+    TIMER_A1->CCTL[0] = 0x0010;
+    TIMER_A1->CCR[0] = (period - 1);
+
+    NVIC->IP[2] = (NVIC->IP[2] & 0xFF00FFFF) | 0x00400000;
+    NVIC->ISER[0] = 0x00000400;
+    TIMER_A1->CTL |= 0x0014;
 }
 
 // ------------TimerA1_Stop------------
@@ -67,6 +77,6 @@ void TimerA1_Stop(void)
 
 void TA1_0_IRQHandler(void)
 {
-    // write this as part of Lab 13
-
+    TIMER_A1->CCTL[0] &= ~0x0001; // acknowledge the capture compare register interrupt zero
+    (*TimerA1Task)(); // execute the task
 }

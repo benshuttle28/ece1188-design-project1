@@ -119,8 +119,23 @@ void PWM_Duty2(uint16_t duty2)
 // Period of P2.7 is period*1.333us, duty cycle is duty4/period
 void PWM_Init34(uint16_t period, uint16_t duty3, uint16_t duty4)
 {
-    // write this as part of Lab 13
+    if (duty3 >= period)
+        return;
+    if (duty4 >= period)
+        return;
 
+    P2->DIR |= 0xC0;
+    P2->SEL0 |= 0xC0;
+    P2->SEL1 &= ~0xC0;
+
+    TIMER_A0->CCTL[0] = 0x0080;
+    TIMER_A0->CCR[0] = period;
+    TIMER_A0->EX0 = 0x0000;
+    TIMER_A0->CCTL[3] = 0x0040;
+    TIMER_A0->CCR[3] = duty3;
+    TIMER_A0->CCTL[4] = 0x0040;
+    TIMER_A0->CCR[4] = duty4;
+    TIMER_A0->CTL = 0x02F0;
 }
 
 //***************************PWM_Duty3*******************************
@@ -130,8 +145,9 @@ void PWM_Init34(uint16_t period, uint16_t duty3, uint16_t duty4)
 // period of P2.6 is 2*period*666.7ns, duty cycle is duty3/period
 void PWM_Duty3(uint16_t duty3)
 {
-    // write this as part of Lab 13
-
+    if (duty3 >= TIMER_A0->CCR[0])
+        return;
+    TIMER_A0->CCR[3] = duty3;
 }
 
 //***************************PWM_Duty4*******************************
@@ -140,8 +156,9 @@ void PWM_Duty3(uint16_t duty3)
 // Outputs: none// period of P2.7 is 2*period*666.7ns, duty cycle is duty2/period
 void PWM_Duty4(uint16_t duty4)
 {
-    // write this as part of Lab 13
-
+    if (duty4 >= TIMER_A0->CCR[0])
+        return;
+    TIMER_A0->CCR[4] = duty4;
 }
 
 //***************************PWM_RobotArmInit*******************************

@@ -55,6 +55,8 @@ int Program13_1(void)
         Motor_Left(2000, 1000);     // your function
         Clock_Delay1ms(1000);
         Motor_Right(2000, 1000);    // your function
+        Clock_Delay1ms(1000);
+        Motor_Stop();
     }
 }
 
