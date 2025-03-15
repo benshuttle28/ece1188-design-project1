@@ -86,7 +86,7 @@ void Task(void)
 //    }
 //}
 
-int main(void)
+int main1(void)
 {
     // write a main program that uses PWM to move the robot
     // like Program13_1, but uses TimerA1 to periodically
