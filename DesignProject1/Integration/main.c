@@ -6,6 +6,7 @@
 #include "..\inc\SysTickInts.h"
 #include "..\inc\CortexM.h"
 #include "..\inc\MotorFSM.h"
+#include "..\Modules\FSM\fsm.h"
 
 
 uint8_t out;
