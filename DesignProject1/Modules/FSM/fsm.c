@@ -14,7 +14,7 @@ uint8_t Reflectance_Center_int(uint8_t data){
     else if (distance < 0) {
         return 0x02;
     }
-    else if (distance <= -4800 || distance >= 4800) {
+    else if (distance <= 4800 && distance >= -4800) {
         return 0x03;
     }
 
