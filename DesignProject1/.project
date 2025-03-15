@@ -27,24 +27,34 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>src/Clock.c</name>
+			<name>Integration/Clock.c</name>
 			<type>1</type>
 			<locationURI>copy_PARENT/inc/Clock.c</locationURI>
 		</link>
 		<link>
-			<name>src/MotorSimple.c</name>
+			<name>Integration/CortexM.c</name>
+			<type>1</type>
+			<locationURI>copy_PARENT/inc/CortexM.c</locationURI>
+		</link>
+		<link>
+			<name>Integration/MotorSimple.c</name>
 			<type>1</type>
 			<locationURI>copy_PARENT/inc/MotorSimple.c</locationURI>
 		</link>
 		<link>
-			<name>src/Reflectance.c</name>
+			<name>Integration/Reflectance.c</name>
 			<type>1</type>
 			<locationURI>copy_PARENT/inc/Reflectance.c</locationURI>
 		</link>
 		<link>
-			<name>src/SysTick.c</name>
+			<name>Integration/SysTickInts.c</name>
 			<type>1</type>
-			<locationURI>copy_PARENT/inc/SysTick.c</locationURI>
+			<locationURI>copy_PARENT/inc/SysTickInts.c</locationURI>
+		</link>
+		<link>
+			<name>Integration/TExaS.c</name>
+			<type>1</type>
+			<locationURI>copy_PARENT/inc/TExaS.c</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>
