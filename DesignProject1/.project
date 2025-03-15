@@ -24,4 +24,31 @@
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Bump.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Desktop/school/ECE%201188/tirslk_max_1_00_00/inc/Bump.c</locationURI>
+		</link>
+		<link>
+			<name>Clock.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Desktop/school/ECE%201188/tirslk_max_1_00_00/inc/Clock.c</locationURI>
+		</link>
+		<link>
+			<name>CortexM.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Desktop/school/ECE%201188/tirslk_max_1_00_00/inc/CortexM.c</locationURI>
+		</link>
+		<link>
+			<name>LaunchPad.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Desktop/school/ECE%201188/tirslk_max_1_00_00/inc/LaunchPad.c</locationURI>
+		</link>
+		<link>
+			<name>SysTick.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Desktop/school/ECE%201188/tirslk_max_1_00_00/inc/SysTick.c</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
