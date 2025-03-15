@@ -66,25 +66,24 @@ int Program13_1(void)
 uint32_t Time;
 void Task(void)
 {
-    Time = Time + 1;
-    if (Time % 100 == 0)
-    {
-        P2->OUT ^= 0x04;
-    }
+   REDLED ^= 0x01; // toggle P2.0
+   REDLED ^= 0x01; // toggle P2.0
+   Time = Time + 1;
+   REDLED ^= 0x01; // toggle P2.0
 }
 
-//int Program13_2(void)
-//{
-//    Clock_Init48MHz();
-//    LaunchPad_Init();  // built-in switches and LEDs
-//    uint32_t time = 50000;
-//    TimerA1_Init(&Task, time);  // 1000 Hz
-//    EnableInterrupts();
-//    while (1)
-//    {
-//        ; // toggle P2.1
-//    }
-//}
+int Program13_2(void)
+{
+    Clock_Init48MHz();
+    LaunchPad_Init();  // built-in switches and LEDs
+    uint32_t time = 50000;
+    TimerA1_Init(&Task, time);  // 1000 Hz
+    EnableInterrupts();
+    while (1)
+    {
+        BLUELED ^= 0x01; // toggle P2.1
+    }
+}
 
 int main(void)
 {
@@ -92,6 +91,6 @@ int main(void)
     // like Program13_1, but uses TimerA1 to periodically
     // check the bump switches, stopping the robot on a collision
 
-    Program13_1();
+    Program13_2();
 
 }

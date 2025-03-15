@@ -119,23 +119,24 @@ void PWM_Duty2(uint16_t duty2)
 // Period of P2.7 is period*1.333us, duty cycle is duty4/period
 void PWM_Init34(uint16_t period, uint16_t duty3, uint16_t duty4)
 {
+    // check for bad inputs
     if (duty3 >= period)
         return;
     if (duty4 >= period)
         return;
 
-    P2->DIR |= 0xC0;
-    P2->SEL0 |= 0xC0;
-    P2->SEL1 &= ~0xC0;
+    P2->DIR |= 0xC0; // P2.6, P2.7 output
+    P2->SEL0 |= 0xC0; // P2.6, P2.7 Timer0A functions
+    P2->SEL1 &= ~0xC0; // P2.6, P2.7 Timer0A functions
 
-    TIMER_A0->CCTL[0] = 0x0080;
-    TIMER_A0->CCR[0] = period;
-    TIMER_A0->EX0 = 0x0000;
-    TIMER_A0->CCTL[3] = 0x0040;
-    TIMER_A0->CCR[3] = duty3;
-    TIMER_A0->CCTL[4] = 0x0040;
-    TIMER_A0->CCR[4] = duty4;
-    TIMER_A0->CTL = 0x02F0;
+    TIMER_A0->CCTL[0] = 0x0080; // CCI0 toggle
+    TIMER_A0->CCR[0] = period; // Period is 2*period*8*83.33ns is 1.333*period
+    TIMER_A0->EX0 = 0x0000; // divide by 1
+    TIMER_A0->CCTL[3] = 0x0040; // CCR3 toggle/reset
+    TIMER_A0->CCR[3] = duty3; // CCR3 duty cycle is duty3/period
+    TIMER_A0->CCTL[4] = 0x0040; // CCR4 toggle/reset
+    TIMER_A0->CCR[4] = duty4; // CCR4 duty cycle is duty4/period
+    TIMER_A0->CTL = 0x02F0; // SMCLK = 12 MHz, divide by 8, up-down mode
 }
 
 //***************************PWM_Duty3*******************************
@@ -146,7 +147,7 @@ void PWM_Init34(uint16_t period, uint16_t duty3, uint16_t duty4)
 void PWM_Duty3(uint16_t duty3)
 {
     if (duty3 >= TIMER_A0->CCR[0])
-        return;
+        return; // bad input
     TIMER_A0->CCR[3] = duty3;
 }
 
@@ -157,7 +158,7 @@ void PWM_Duty3(uint16_t duty3)
 void PWM_Duty4(uint16_t duty4)
 {
     if (duty4 >= TIMER_A0->CCR[0])
-        return;
+        return; // bad input
     TIMER_A0->CCR[4] = duty4;
 }
 
