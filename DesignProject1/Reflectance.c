@@ -135,7 +135,7 @@ int32_t Reflectance_Position(uint8_t data)
 
     if (denominator == 0)
         return 0;  // Prevent division by zero
-    return (numerator / denominator) / 100;
+    return (numerator / denominator);
 }
 
 // ------------Reflectance_Start------------

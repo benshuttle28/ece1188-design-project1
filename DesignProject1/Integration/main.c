@@ -16,9 +16,6 @@ state_t *motor_pt;
 uint8_t reflectance_lock = 0;
 uint8_t interrupts = 0;
 uint8_t sensor_out;
-uint16_t leftDutyLocal;
-uint16_t rightDutyLocal;
-
 
 void SysTick_Handler(void){ // every 1ms
   if ((interrupts % 10) == 0) {
@@ -28,12 +25,18 @@ void SysTick_Handler(void){ // every 1ms
   else if ((interrupts % 10) == 1) {
       sensor_out = Reflectance_End();
       reflectance_lock = 0;
-      reflectance_input = Reflectance_Center_int(sensor_out);
+      reflectance_input = Reflectance_Center_int2(sensor_out);
       motor_pt = motor_pt->next[reflectance_input];
       // drive motors at given duty cycles
-      leftDutyLocal = motor_pt->leftDuty;
-      rightDutyLocal = motor_pt->rightDuty;
-      Motor_Forward(leftDutyLocal, rightDutyLocal);
+      if(motor_pt->out == 0x01){
+          Motor_Left(motor_pt->leftDuty, motor_pt->rightDuty);
+      }
+      if(motor_pt->out == 0x06){
+          Motor_Right(motor_pt->leftDuty, motor_pt->rightDuty);
+      }
+      else {
+      Motor_Forward(motor_pt->leftDuty, motor_pt->rightDuty);
+      }
       out = motor_pt->out;
       //Illuminate_LEDs(sensor_out);
 
@@ -51,7 +54,7 @@ void main() {
 
     Clock_Init48MHz();
     LaunchPad_Init();
-    Pause();
+    //Pause();
     Motor_Init();
     Reflectance_Init();
     SysTick_Init(48000, 1);

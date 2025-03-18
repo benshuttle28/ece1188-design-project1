@@ -50,12 +50,12 @@ int Program13_1(void)
         Clock_Delay1ms(1000);
         Motor_Forward(1000, 1000);  // your function
         Clock_Delay1ms(3000);
-        Motor_Forward(1000, 1000); // your function
-        Clock_Delay1ms(10);
-        Motor_Forward(1000, 0);     // your function
-        Clock_Delay1ms(10);
-        Motor_Forward(0, 1000);    // your function
-        Clock_Delay1ms(10);
+        Motor_Left(1000, 1000); // your function
+        Clock_Delay1ms(2000);
+        Motor_Right(1000, 10000);     // your function
+        Clock_Delay1ms(2000);
+        Motor_Forward(1000, 1000);    // your function
+        Clock_Delay1ms(2000);
         Motor_Stop();
     }
 }
