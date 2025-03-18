@@ -34,19 +34,19 @@ uint8_t Reflectance_Center_int2(uint8_t data)
     {
         return 0x00;
     }
-    else if (distance >= 33400)
+    else if (distance >= 23800)
     {
         return 0x01; // far off to left
     }
-    else if ((distance > 4800) && (distance < 33400))
+    else if ((distance > 4800) && (distance < 23800))
     {
         return 0x02; // off to left
     }
-    else if ((distance < -4800) && (distance > -33400))
+    else if ((distance < -4800) && (distance > -23800))
     {
         return 0x03; // off to right
     }
-    else if (distance <= -33400)
+    else if (distance <= -23800)
     {
         return 0x04; // far off to right
     }
