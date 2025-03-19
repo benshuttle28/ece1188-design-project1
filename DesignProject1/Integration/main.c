@@ -7,7 +7,7 @@
 #include "LaunchPad.h"
 #include "SysTickInts.h"
 #include "CortexM.h"
-#include "MotorFSM.h"
+#include "../Modules/FSM/MotorFSM.h"
 #include "../Modules/FSM/fsm.h"
 
 uint8_t reflectance_input;
@@ -105,7 +105,7 @@ void SysTick_Handler(void)
                 // left swtiches (turn left then back up)
                 Motor_Backward(2000, 2000);
                 Clock_Delay1ms(1000);
-                Motor_Left(2000, 2000);
+                Motor_Right(2000, 2000);
                 Clock_Delay1ms(500);
 
             }
@@ -114,7 +114,7 @@ void SysTick_Handler(void)
                 // right switches (turn right then back up)
                 Motor_Backward(2000, 2000);
                 Clock_Delay1ms(1000);
-                Motor_Right(2000, 2000);
+                Motor_Left(2000, 2000);
                 Clock_Delay1ms(500);
             }
             Reset_Flag();
