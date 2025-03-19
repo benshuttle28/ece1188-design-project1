@@ -16,6 +16,53 @@ uint8_t reflectance_lock = 0;
 uint8_t interrupts = 0;
 uint8_t sensor_out;
 
+void set_pins() {
+    P1->SEL0 &= ~0xFF;
+    P1->SEL1 &= ~0xFF;
+    P1->DIR |= 0xFF;
+    P1->OUT &= ~0xFF;
+
+    P2->SEL0 &= ~0xFF;
+    P2->SEL1 &= ~0xFF;
+    P2->DIR |= 0xFF;
+    P2->OUT &= ~0xFF;
+
+    P3->SEL0 &= ~0xFF;
+    P3->SEL1 &= ~0xFF;
+    P3->DIR |= 0xFF;
+    P3->OUT &= ~0xFF;
+
+    P4->SEL0 &= ~0xFF;
+    P4->SEL1 &= ~0xFF;
+    P4->DIR |= 0xFF;
+    P4->OUT &= ~0xFF;
+
+    P5->SEL0 &= ~0xFF;
+    P5->SEL1 &= ~0xFF;
+    P5->DIR |= 0xFF;
+    P5->OUT &= ~0xFF;
+
+    P6->SEL0 &= ~0xFF;
+    P6->SEL1 &= ~0xFF;
+    P6->DIR |= 0xFF;
+    P6->OUT &= ~0xFF;
+
+    P8->SEL0 &= ~0xFF;
+    P8->SEL1 &= ~0xFF;
+    P8->DIR |= 0xFF;
+    P8->OUT &= ~0xFF;
+
+    P9->SEL0 &= ~0xFF;
+    P9->SEL1 &= ~0xFF;
+    P9->DIR |= 0xFF;
+    P9->OUT &= ~0xFF;
+
+    P10->SEL0 &= ~0xFF;
+    P10->SEL1 &= ~0xFF;
+    P10->DIR |= 0xFF;
+    P10->OUT &= ~0xFF;
+}
+
 void Illuminate_LEDs(uint8_t sensor_out) {
     if (sensor_out == 0x00) {
         P2->OUT &= ~0x06;

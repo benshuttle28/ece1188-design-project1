@@ -12,7 +12,7 @@ struct motorState {
     uint8_t out;
     uint16_t leftDuty;
     uint16_t rightDuty;
-    const struct motorState *next[8];
+    const struct motorState *next[7];
 };
 
 typedef const struct motorState state_t;
@@ -34,16 +34,16 @@ typedef const struct motorState state_t;
 #define adjustmentDuty      1000
 
 state_t FSM[10] = {
-                  {0x00, centerDuty, centerDuty, {farRightTurn, leftAdjustment, center, center, rightAdjustment, center, backwards, center}},
-                  {0x01, backwardTurnDuty, hardTurnDuty, {farLeftTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, rightTurn, backwards, center}},
-                  {0x02, 0x00, lightTurnDuty, {farLeftTurn, farLeftTurn, leftCenter, rightTurn, farRightTurn, rightTurn, backwards, center}},
-                  {0x03, lightTurnDuty, lightTurnDuty, {farLeftTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, center, backwards, center}},
-                  {0x04, lightTurnDuty, lightTurnDuty, {farRightTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, center, backwards, center}},
-                  {0x05, lightTurnDuty, 0x00, {farRightTurn, farLeftTurn, leftTurn, rightCenter, farRightTurn, leftTurn, backwards, center}},
-                  {0x06, hardTurnDuty, backwardTurnDuty, {farRightTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, leftTurn, backwards, center}},
-                  {0x07, 0x00, adjustmentDuty, {farLeftTurn, leftTurn, center, center, farRightTurn, center, backwards, center}},
-                  {0x08, adjustmentDuty, 0x00, {farRightTurn, leftTurn, center, center, farRightTurn, center, backwards, center}},
-                  {0x09, backwardTurnDuty, backwardTurnDuty, {backwards, farLeftTurn, farLeftTurn, farRightTurn, farRightTurn, farRightTurn, backwards, center}}
+                  {0x00, centerDuty, centerDuty, {farRightTurn, leftAdjustment, center, center, rightAdjustment, center, backwards}},
+                  {0x01, backwardTurnDuty, hardTurnDuty, {farLeftTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, rightTurn, backwards}},
+                  {0x02, 0x00, lightTurnDuty, {farLeftTurn, farLeftTurn, leftCenter, rightTurn, farRightTurn, rightTurn, backwards}},
+                  {0x03, lightTurnDuty, lightTurnDuty, {farLeftTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, center, backwards}},
+                  {0x04, lightTurnDuty, lightTurnDuty, {farRightTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, center, backwards}},
+                  {0x05, lightTurnDuty, 0x00, {farRightTurn, farLeftTurn, leftTurn, rightCenter, farRightTurn, leftTurn, backwards}},
+                  {0x06, hardTurnDuty, backwardTurnDuty, {farRightTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, leftTurn, backwards}},
+                  {0x07, 0x00, adjustmentDuty, {farLeftTurn, leftTurn, center, center, farRightTurn, center, backwards}},
+                  {0x08, adjustmentDuty, 0x00, {farRightTurn, leftTurn, center, center, farRightTurn, center, backwards}},
+                  {0x09, backwardTurnDuty, backwardTurnDuty, {backwards, farLeftTurn, farLeftTurn, farRightTurn, farRightTurn, farRightTurn, backwards}}
                   };
 
 /*
