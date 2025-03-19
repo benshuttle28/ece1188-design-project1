@@ -48,7 +48,7 @@ int Program13_1(void)
     while (1)
     {
         Clock_Delay1ms(1000);
-        Motor_Forward(1000, 1000);  // your function
+        Motor_Left(1000, 1000);  // your function
         Clock_Delay1ms(3000);
         Motor_Left(1000, 1000); // your function
         Clock_Delay1ms(2000);
