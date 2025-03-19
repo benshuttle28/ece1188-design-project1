@@ -119,7 +119,7 @@ uint8_t Reflectance_Center(uint32_t time)
 // Output: position in 0.1mm relative to center of line
 int32_t Reflectance_Position(uint8_t data)
 {
-    int32_t w[8] = { 33400, 23800, 14300, 4800, -4800, -14300, -23800, -33400 };
+    int32_t w[8] = { -33400, -23800, -14300, -4800, 4800, 14300, 23800, 33400 };
 
     int32_t numerator = 0;
     int32_t denominator = 0;
@@ -135,7 +135,7 @@ int32_t Reflectance_Position(uint8_t data)
 
     if (denominator == 0)
         return 0;  // Prevent division by zero
-    return (numerator / denominator) / 100;
+    return (numerator / denominator);
 }
 
 // ------------Reflectance_Start------------
