@@ -17,7 +17,6 @@ uint8_t interrupts = 0;
 uint8_t sensor_out;
 
 void Illuminate_LEDs(uint8_t sensor_out) {
-    P2->OUT &= ~0x07;
     if (sensor_out == 0x00) {
         P2->OUT &= ~0x06;
         P2->OUT |= 0x01; // red, straight
@@ -46,9 +45,13 @@ void Illuminate_LEDs(uint8_t sensor_out) {
         P2->OUT &= ~0x00;
         P2->OUT |= 0x07; // white, hard right turn
     }
-    else {
+    else if (sensor_out == 0x07 ){
         P2->OUT &= ~0x02;
-        P2->OUT |= 0x05; // pink, other
+        P2->OUT |= 0x05; // pink, left adjustment
+    }
+    else if (sensor_out == 0x08) {
+        P2->OUT &= ~0x01;
+        P2->OUT |= 0x06; // sky blue
     }
 }
 

@@ -17,21 +17,39 @@ struct motorState {
 
 typedef const struct motorState state_t;
 #define center      &FSM[0]
-#define farLeftTurn    &FSM[1]
+#define farLeftTurn     &FSM[1]
 #define leftTurn        &FSM[2]
 #define leftCenter  &FSM[3]
 #define rightCenter &FSM[4]
 #define rightTurn       &FSM[5]
 #define farRightTurn    &FSM[6]
-#define backwards     &FSM[7]
+#define rightAdjustment     &FSM[7]
+#define leftAdjustment  &FSM[8]
+#define backward        &FSM[9]
 
 #define centerDuty          1000
 #define lightTurnDuty       1000
 #define hardTurnDuty        2000
 #define backwardTurnDuty    1000
+#define adjustmentDuty      1000
+
+state_t FSM[10] = {
+                  {0x00, centerDuty, centerDuty, {farRightTurn, leftAdjustment, center, center, rightAdjustment, center, backwards, center}},
+                  {0x01, backwardTurnDuty, hardTurnDuty, {farLeftTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, rightTurn, backwards, center}},
+                  {0x02, 0x00, lightTurnDuty, {farLeftTurn, farLeftTurn, leftCenter, rightTurn, farRightTurn, rightTurn, backwards, center}},
+                  {0x03, lightTurnDuty, lightTurnDuty, {farLeftTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, center, backwards, center}},
+                  {0x04, lightTurnDuty, lightTurnDuty, {farRightTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, center, backwards, center}},
+                  {0x05, lightTurnDuty, 0x00, {farRightTurn, farLeftTurn, leftTurn, rightCenter, farRightTurn, leftTurn, backwards, center}},
+                  {0x06, hardTurnDuty, backwardTurnDuty, {farRightTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, leftTurn, backwards, center}},
+                  {0x07, 0x00, adjustmentDuty, {farLeftTurn, leftTurn, center, center, farRightTurn, center, backwards, center}},
+                  {0x08, adjustmentDuty, 0x00, {farRightTurn, leftTurn, center, center, farRightTurn, center, backwards, center}},
+                  {0x09, backwardTurnDuty, backwardTurnDuty, {backwards, farLeftTurn, farLeftTurn, farRightTurn, farRightTurn, farRightTurn, backwards, center}}
+                  };
+
+/*
 
 state_t FSM[8] = {
-                  {0x00, centerDuty, centerDuty, {farRight, farLeftTurn, leftTurn, rightTurn, farRightTurn, center, backwards, center}},
+                  {0x00, centerDuty, centerDuty, {farRightTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, center, backwards, center}},
                   {0x01, backwardTurnDuty, hardTurnDuty, {farLeftTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, rightTurn, backwards, center}},
                   {0x02, 0x00, lightTurnDuty, {farLeftTurn, farLeftTurn, leftCenter, rightTurn, farRightTurn, rightTurn, backwards, center}},
                   {0x03, lightTurnDuty, lightTurnDuty, {farLeftTurn, farLeftTurn, leftTurn, rightTurn, farRightTurn, center, backwards, center}},
